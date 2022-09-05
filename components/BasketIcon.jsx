@@ -8,9 +8,15 @@ const BasketIcon = () => {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const navigation = useNavigation();
+
+  if (items.length === 0) return null;
+
   return (
     <View className="absolute bottom-10 w-full z-50">
-      <TouchableOpacity className=" flex-row items-center space-x-1 mx-5 bg-[#00ccbb] p-4 rounded-lg">
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Basket")}
+        className=" flex-row items-center space-x-1 mx-5 bg-[#00ccbb] p-4 rounded-lg"
+      >
         <Text className="text-white font-extrabold text-lg bg-[#01a296] py-1 px-2 rounded">
           {items.length}
         </Text>
